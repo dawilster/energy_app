@@ -307,6 +307,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.1)
   redis
+  responders
   rspec-rails (~> 3.0.0)
   rubocop
   sass-rails (~> 5.0)

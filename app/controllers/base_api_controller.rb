@@ -1,4 +1,6 @@
-class Api::BaseApiController < InheritedResources
+require 'json_responder'
+
+class BaseApiController < InheritedResources::Base
   respond_to :json
   responders :json
 
