@@ -28,6 +28,7 @@ gem 'rubocop', require: false
 gem 'inherited_resources'
 gem 'active_model_serializers', '~> 0.8'
 gem 'kaminari'
+gem 'has_scope'
 
 gem 'foreman'
 gem 'unicorn'
@@ -48,6 +49,7 @@ gem 'activeadmin', github: 'activeadmin'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'annotate'
 end
 
 group :test do

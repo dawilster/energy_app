@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409024438) do
+ActiveRecord::Schema.define(version: 20150409051943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +58,30 @@ ActiveRecord::Schema.define(version: 20150409024438) do
     t.integer  "battery_value"
     t.integer  "motion_state"
     t.integer  "power_value"
+    t.integer  "decibal_value"
     t.boolean  "contact_state"
     t.boolean  "switch_state"
     t.string   "user_id"
     t.string   "type"
-    t.datetime "timestamp"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "time_in_office"
+    t.integer  "temperate_value"
+    t.integer  "audio_value"
+    t.integer  "comfort_value"
+    t.text     "comment"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "occupants"
+    t.integer  "temperature_value"
+    t.integer  "noise_level"
+    t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
