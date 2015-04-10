@@ -52,19 +52,12 @@ ActiveRecord::Schema.define(version: 20150409051943) do
   create_table "events", force: :cascade do |t|
     t.string   "display_name"
     t.string   "sensor_type"
-    t.integer  "illuminance_value"
-    t.integer  "temperature_value"
-    t.integer  "humidity_value"
-    t.integer  "battery_value"
-    t.integer  "motion_state"
-    t.integer  "power_value"
-    t.integer  "decibal_value"
-    t.boolean  "contact_state"
-    t.boolean  "switch_state"
+    t.string   "value"
+    t.boolean  "state"
     t.string   "user_id"
     t.string   "type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
