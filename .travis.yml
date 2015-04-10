@@ -6,3 +6,8 @@ addons:
 
 rvm:
 - 2.1.2
+
+deploy:
+  provider: cloud66
+  redeployment_hook:
+    production: "https://hooks.cloud66.com/stacks/redeploy/a10eaad53152560d60a989663c75cd6d/6fb2c8ed128c167d55205ec54cc9e884"
