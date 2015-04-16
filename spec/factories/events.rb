@@ -15,5 +15,8 @@
 
 FactoryGirl.define do
   factory :event do
+    display_name "test"
+    sensor_type "test"
+    value "10"
   end
 end
