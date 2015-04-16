@@ -12,7 +12,6 @@ class Api::V1::EventsController < BaseApiController
     return ActionController::Parameters.new(event: mapped)
   end
 
-
   def permitted_params
     mapped_params(params).permit(:event => [
       :display_name,

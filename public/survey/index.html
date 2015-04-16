@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	  <title>EnergyApp | Home</title>
+
+  	<!-- Bootstrap CSS CDN-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link href="css/main.css" rel="stylesheet">
+
+    <!--Bootstrap Switch-->
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+    
+    <!--Jquery Slider-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="css/jquery-slider.css" rel="stylesheet">
+
+    <!--Jquery Slider pips-->
+    <!-- plus a jQuery UI theme, here I use "flick" -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+    <link href="css/jquery-ui-slider-pips.css" rel="stylesheet">
+
+	</head>
+	<body>
+    <!--nav bar-->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">       
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <i class="fa fa-bolt fa-lg"></i> EnergyAPP</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">  
+              <a href="index.html">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME<span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" id="logout-button"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--end of nav bar-->
+
+		<div class="container">
+      <div class="row">
+        <div class="col-xs-1 col-sm-3"></div><!--empty div-->
+        <div class="col-xs-10 col-sm-6">
+          <!--well-->
+          <div class="well" id="userinfo">         
+            <p class="text-capitalize">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Name: <b id="name"></b>
+            </p>
+            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date: <b id="date"></b></p>
+            <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time: <b id="time"></b></p> 
+
+          </div><!--well-->
+        </div><!--col-xs-10-->
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-xs-1 col-sm-2 col-md-3"></div><!--empty div-->
+        <div class="col-xs-10 col-sm-8 col-md-6">
+          <form>  
+            <p>I'm 
+              <input id="switch-state" type="checkbox" value="in" data-size="small" data-on-text="IN" data-off-text="OUT" onchange="inroom();" /> 
+              room <b id="roomno"></b> .             
+            </p>
+
+          <div id="surveydata">
+            <p>I'm with other people. 
+              <input id="switch-people" type="checkbox" data-size="small" data-on-text="Yes" data-off-text="No" onchange="withothers();" />   
+            </p>
+          
+            <!--show error messages-->
+            <p><div class="alert alert-danger" id="num_alert" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><b> Oh snap!</b> Must input a numbers value!</div></p>
+         
+            <p>How many <b>people(s)</b> around me:
+            <div class="input-group">
+            <input id="people-num" name="num_people" value="" type="number" class="form-control" placeholder="Enter Amount" pattern="[0-9]{10}" required disabled></div></p>
+            
+            <p>I feel: <input type="text" name="cool" id="cool" value="Normal" readonly/></p>
+            <div id="slider-cold" style="margin:5% 0 10% 0"></div> <!--slider-->
+
+            <p>I feel: <input type="text" name="noise" id="noise" value="Normal" readonly/></p>
+            <div id="slider-noisy" style="margin:5% 0 10% 0"></div> <!--slider-->
+
+            <!--input for post data-->
+            <input type="hidden" name="user_id" value="" id="user_id">
+            <input type="hidden" name="room_num" value="" id="room_num">
+            <input type="hidden" name="date" value="" id="dateinput">
+            <input type="hidden" name="time" value="" id="timeinput">
+            <input type="hidden" name="cool_level" value="3" id="cool_level">
+            <input type="hidden" name="noise_level" value="3" id="noise_level">
+
+            <button type="submit" name="submitted" class="btn btn-primary btn-lg pull-right submitted">
+              Submit
+            </button>
+
+          </div>
+
+          </form>
+        </div>
+      </div><!--row-->
+    </div><!--container-->
+
+		<!-- Bootstrap core JavaScript (CDN)
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core JavaScript (local)
+    ================================================== -->
+    <script src="js/highlight.js"></script>
+    <script src="js/main.js"></script>
+
+    <!--Date and time-->
+    <script src="js/time.js"></script>  
+
+    <!--jQuery Slider-->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/jquery-slider.js"></script>
+
+    <!--Jquery Slider pips-->
+    <!-- include the jQuery and jQuery UI scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="js/jquery-ui-slider-pips.js"></script>
+
+    <!-- Bootstrap Switch-->
+    <script src="js/bootstrap-switch.js"></script>
+    
+    <!--cookie and logout-->
+    <script src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/logout.js"></script>
+    
+    <script type="text/javascript" src="js/survey.js"></script>
+	</body>
+</html>
