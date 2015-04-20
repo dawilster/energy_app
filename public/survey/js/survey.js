@@ -13,11 +13,17 @@ $( document ).ready(function() {
 		document.getElementById("roomno").innerHTML = "14.10.06";
 		document.getElementById("room_num").value = "14.10.06";
 
-	}else{
+	}else if( $.cookie("user_id") == 3 ){
 		document.getElementById("name").innerHTML = "Flora Salim";
 		document.getElementById("user_id").value = "Flora Salim";
 		document.getElementById("roomno").innerHTML = "14.10.03";
 		document.getElementById("room_num").value = "14.10.03";
+
+	}else if( $.cookie("user_id") == 4 ){
+		document.getElementById("name").innerHTML = "Saiedur Rahaman";
+		document.getElementById("user_id").value = "Saiedur Rahaman";
+		document.getElementById("roomno").innerHTML = "14.10.06";
+		document.getElementById("room_num").value = "14.10.06";
 	}
 
 	//when submit is called postData method
@@ -31,7 +37,6 @@ $( document ).ready(function() {
 		}
 	});
 });
-
 
 function postData(){
 	//alert("post");
