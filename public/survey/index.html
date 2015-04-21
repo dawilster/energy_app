@@ -55,7 +55,7 @@
     </nav>
     <!--end of nav bar-->
 
-		<div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-xs-1 col-sm-3"></div><!--empty div-->
         <div class="col-xs-10 col-sm-6">
@@ -65,7 +65,11 @@
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Name: <b id="name"></b>
             </p>
             <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date: <b id="date"></b></p>
-            <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time: <b id="time"></b></p> 
+            <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time: <b id="time"></b>
+            <button type="button" id="changeTimebtn"class="btn btn-danger btn-xs" onclick="inputTime()">Change Time</button>
+            <input type="time" name="usr_time" id="usrtime" value="">
+            <button type="button" id="showTimebtn" class="btn btn-primary btn-xs" onclick="addtime()">Save Time</button>
+            </p>  
 
           </div><!--well-->
         </div><!--col-xs-10-->
@@ -99,13 +103,16 @@
             <div id="slider-noisy" style="margin:5% 0 10% 0"></div> <!--slider-->
 
             <!--input for post data-->
+            <input type="hidden" name="inout" value="out" id="inout">
             <input type="hidden" name="user_id" value="" id="user_id">
             <input type="hidden" name="room_num" value="" id="room_num">
             <input type="hidden" name="date" value="" id="dateinput">
             <input type="hidden" name="time" value="" id="timeinput">
             <input type="hidden" name="cool_level" value="3" id="cool_level">
             <input type="hidden" name="noise_level" value="3" id="noise_level">
-	 </div>
+	  </div><!--div survey data-->
+            <p>Comments:</p> 
+            <textarea class="form-control" rows="3" id="comment" placeholder="Enter Comments Here"></textarea>            
             <button type="submit" name="submitted" class="btn btn-primary btn-lg pull-right submitted">
               Submit
             </button>
