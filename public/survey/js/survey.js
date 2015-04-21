@@ -47,11 +47,12 @@ function postData(){
 	people_num = $('#people-num').val();
 	cool = $('#cool_level').val();
 	noise = $('#noise_level').val();
+	inout = $('#inout').val();
 
 	$.ajax({
 	  type: "POST",
 	  url: "/api/v1/surveys.json",
-	  data: {survey: {user_id: user_id, occupants: people_num, temperature_value: cool, noise_level:noise }},
+	  data: {survey: {user_id: user_id, occupants: people_num, temperature_value: cool, noise_level:noise, inout: inout, comment: usercomment }},
 	  success: function(){
 	  },
 	  dataType: "json"
