@@ -14,6 +14,10 @@ body{background-color: #F0EFE2}
     -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;
     box-shadow: 0px 1px 5px 0px #4a4a4a;
 }
+#time{display: inline}
+#usrtime{display: none}
+#changeTimebtn{display: inline; margin-left: 15px;}
+#showTimebtn{display: none;margin: 10px 0 0 60px;}
 #surveydata{display: none}
 .alert{display: none}
 #cool, #noise{background-color: #F0EFE2}
