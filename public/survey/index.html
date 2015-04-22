@@ -83,8 +83,6 @@
               <input id="switch-state" type="checkbox" value="in" data-size="small" data-on-text="IN" data-off-text="OUT" onchange="inroom();" /> 
               room <b id="roomno"></b> .             
             </p>
-
-          <div id="surveydata">
             <p>I'm with other people. 
               <input id="switch-people" type="checkbox" data-size="small" data-on-text="Yes" data-off-text="No" onchange="withothers();" />   
             </p>
@@ -98,7 +96,7 @@
             
             <p>I feel: <input type="text" name="cool" id="cool" value="Normal" readonly/></p>
             <div id="slider-cold" style="margin:5% 0 10% 0"></div> <!--slider-->
-
+	    <br />
             <p>I feel: <input type="text" name="noise" id="noise" value="Normal" readonly/></p>
             <div id="slider-noisy" style="margin:5% 0 10% 0"></div> <!--slider-->
 
@@ -110,7 +108,7 @@
             <input type="hidden" name="time" value="" id="timeinput">
             <input type="hidden" name="cool_level" value="3" id="cool_level">
             <input type="hidden" name="noise_level" value="3" id="noise_level">
-	  </div><!--div survey data-->
+	    <br />	
             <p>Comments:</p> 
             <textarea class="form-control" rows="3" id="comment" placeholder="Enter Comments Here"></textarea>            
             <button type="submit" name="submitted" class="btn btn-primary btn-lg pull-right submitted">
