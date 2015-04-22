@@ -6,6 +6,8 @@ class Api::V1::SurveysController < BaseApiController
       :occupants,
       :noise_level,
       :temperature_value,
+      :in_out,
+      :commment,
       :user_id
     ])
   end
