@@ -64,9 +64,9 @@ function postData(){
 function inroom(){
   var x = document.getElementById("switch-state").checked;
   if (x==true){
-    document.getElementById("surveydata").style.display="block";}
+    document.getElementById("inout").value="in";}
   else{
-    document.getElementById("surveydata").style.display="none";}
+    document.getElementById("inout").value="out";}
 }
 //hiding the people input
 function withothers(){
