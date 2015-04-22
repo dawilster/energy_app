@@ -18,7 +18,6 @@ body{background-color: #F0EFE2}
 #usrtime{display: none}
 #changeTimebtn{display: inline; margin-left: 15px;}
 #showTimebtn{display: none;margin: 10px 0 0 60px;}
-#surveydata{display: none}
 .alert{display: none}
 #cool, #noise{background-color: #F0EFE2}
 .submitted{margin:10% 0;}
