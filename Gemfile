@@ -38,6 +38,7 @@ gem 'redis'
 gem 'sidekiq'
 
 gem 'devise'
+gem 'exception_notification'
 gem 'activeadmin', github: 'activeadmin'
 
 # Use ActiveModel has_secure_password
