@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422043809) do
+ActiveRecord::Schema.define(version: 20150426095556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20150422043809) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "events", ["display_name"], name: "index_events_on_display_name", using: :btree
+
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "time_in_office"
     t.integer  "temperate_value"
@@ -68,6 +70,19 @@ ActiveRecord::Schema.define(version: 20150422043809) do
     t.text     "comment"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "processed_events", force: :cascade do |t|
+    t.float    "lux_value"
+    t.float    "temperature_value"
+    t.float    "humidity_value"
+    t.boolean  "door_closed"
+    t.float    "power_value"
+    t.boolean  "motion_detected"
+    t.boolean  "person_out"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "surveys", force: :cascade do |t|

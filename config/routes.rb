@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+  resources :dashboard
+
   namespace :api do
     namespace :v1 do
       resources :feedbacks, only: [:index, :create, :show]
