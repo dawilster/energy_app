@@ -39,7 +39,6 @@ $( document ).ready(function() {
 });
 
 function postData(){
-	//alert("post");
 	user_id = $.cookie("user_id");
 	room_num = $('#room_num').val();
 	date = $('#dateinput').val();
@@ -47,6 +46,7 @@ function postData(){
 	people_num = $('#people-num').val();
 	cool = $('#cool_level').val();
 	noise = $('#noise_level').val();
+	usercomment = $('#comment').val();
 	inout = $('#inout').val();
 
 	$.ajax({
