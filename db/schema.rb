@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429070503) do
+ActiveRecord::Schema.define(version: 20150429081358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,17 +73,6 @@ ActiveRecord::Schema.define(version: 20150429070503) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "lab_surveys", force: :cascade do |t|
-    t.integer  "room_id"
-    t.float    "hours_spent"
-    t.integer  "temperature_value"
-    t.integer  "noise_level"
-    t.integer  "comfort_value"
-    t.text     "comment"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
   create_table "processed_events", force: :cascade do |t|
     t.float    "lux_value"
     t.float    "temperature_value"
@@ -92,10 +81,10 @@ ActiveRecord::Schema.define(version: 20150429070503) do
     t.float    "power_value"
     t.boolean  "motion_detected"
     t.boolean  "person_out"
-    t.datetime "timestamp"
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.datetime "timestamp"
   end
 
   create_table "surveys", force: :cascade do |t|
