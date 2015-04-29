@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426095556) do
+ActiveRecord::Schema.define(version: 20150429070503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150426095556) do
   end
 
   add_index "events", ["display_name"], name: "index_events_on_display_name", using: :btree
+  add_index "events", ["sensor_type"], name: "index_events_on_sensor_type", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "time_in_office"
@@ -72,6 +73,17 @@ ActiveRecord::Schema.define(version: 20150426095556) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "lab_surveys", force: :cascade do |t|
+    t.integer  "room_id"
+    t.float    "hours_spent"
+    t.integer  "temperature_value"
+    t.integer  "noise_level"
+    t.integer  "comfort_value"
+    t.text     "comment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "processed_events", force: :cascade do |t|
     t.float    "lux_value"
     t.float    "temperature_value"
@@ -80,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150426095556) do
     t.float    "power_value"
     t.boolean  "motion_detected"
     t.boolean  "person_out"
+    t.datetime "timestamp"
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

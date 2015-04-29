@@ -9,6 +9,8 @@
 #  user_id           :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  comment           :text
+#  in_out            :string
 #
 
 # Survey submissions are from the web app

@@ -8,6 +8,7 @@ class CreateProcessedEvents < ActiveRecord::Migration
       t.float :power_value
       t.boolean :motion_detected
       t.boolean :person_out
+      t.datetime :timestamp
 
       t.integer :user_id
       t.timestamps null: false
