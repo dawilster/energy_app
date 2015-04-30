@@ -22,6 +22,7 @@ class ProcessedEvent < ActiveRecord::Base
   has_many :surveys, foreign_key: :user_id, primary_key: :user_id
 
   validates_presence_of :user_id, :timestamp
+  validates_uniqueness_of :timestamp, scope: :user_id
 
   #Validations
   before_validation :set_lux_value

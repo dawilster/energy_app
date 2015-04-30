@@ -149,4 +149,20 @@ RSpec.describe ProcessedEvent, :type => :model do
     end
 
   end
+
+  describe "validations" do
+
+    it "cannot create 2 p_events with same timestamp and same user_id" do
+      p_event = create(:processed_event)
+      other_p_event = build(:processed_event, user_id: p_event.user_id, timestamp: p_event.timestamp)
+      expect(other_p_event).to_not be_valid
+    end
+
+    it "multiple can exist at timestamp if user_id is different" do
+      p_event = create(:processed_event)
+      other_p_event = build(:processed_event, user_id: p_event.user_id + 1, timestamp: p_event.timestamp)
+      expect(other_p_event).to be_valid
+    end
+
+  end
 end
