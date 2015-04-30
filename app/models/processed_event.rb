@@ -17,12 +17,19 @@
 #
 
 class ProcessedEvent < ActiveRecord::Base
+
+  #Relations
+  has_many :surveys, foreign_key: :user_id, primary_key: :user_id
+
   validates_presence_of :user_id, :timestamp
 
   #Validations
   before_validation :set_lux_value
   before_validation :set_temperature_value
   before_validation :set_humdity_value
+  before_validation :set_noise_level
+  before_validation :set_person_out_value
+  before_validation :set_door_closed
 
   def devices
     case user_id
@@ -48,7 +55,13 @@ class ProcessedEvent < ActiveRecord::Base
   end
 
   def second_difference(start_time, end_time)
-    elapsed_seconds = (end_time - start_time).to_i
+    elapsed_seconds = ((end_time - start_time) / 60).to_i
+  end
+
+  def nearest_surveys
+    @surveys ||= surveys
+    .order(%{ABS(EXTRACT(EPOCH FROM ('#{timestamp.to_formatted_s(:db)}'::timestamp - created_at))) asc} )
+    .where('created_at < ? AND created_at > ?', timestamp + 1.hour, timestamp - 1.hour)
   end
 
   private
@@ -57,7 +70,7 @@ class ProcessedEvent < ActiveRecord::Base
     collection = events.where(sensor_type: sensor_type)
     events.where(sensor_type: 'temperature')
     previous_event = collection.where('created_at < ?', timestamp).order(created_at: :desc).first
-    current_event = collection.find_by_created_at(timestamp)
+    current_event = collection.where('created_at < ? AND created_at > ?', timestamp.beginning_of_minute + 1.minute, timestamp.beginning_of_minute).first
     future_event = collection.where('created_at > ?', timestamp).order(created_at: :asc).first
 
     if current_event
@@ -71,6 +84,18 @@ class ProcessedEvent < ActiveRecord::Base
     end
   end
 
+  def set_door_closed
+    event = events.where(sensor_type: 'contact').where('created_at <= ?', timestamp).order(created_at: :desc).first
+    if event
+      if event.value == 'closed'
+        self.door_closed = true
+      else
+        self.door_closed = false
+      end
+    end
+    true
+  end
+
   def set_lux_value
     construct_queries('illuminance', :lux_value)
   end
@@ -81,5 +106,22 @@ class ProcessedEvent < ActiveRecord::Base
 
   def set_humdity_value
     construct_queries('humidity', :humidity_value)
+  end
+
+  def set_person_out_value
+    survey = nearest_surveys.first
+    if survey
+      if survey.in_out == 'in'
+        self.person_out = false
+      else
+        self.person_out = true
+      end
+    end
+    true
+  end
+
+  def set_noise_level
+    survey = nearest_surveys.first
+    self.noise_level = survey.noise_level if survey
   end
 end
