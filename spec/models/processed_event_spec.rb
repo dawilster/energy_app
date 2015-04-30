@@ -24,6 +24,16 @@ RSpec.describe ProcessedEvent, :type => :model do
     expect(event).to be_valid
   end
 
+  describe "nearest_survey" do
+    it "returns survey with nearest timestamp" do
+      p_event = create(:processed_event)
+      survey2 = create(:survey, noise_level: 5, created_at: 11.minutes.ago)
+      survey = create(:survey, noise_level: 5, created_at: 10.minutes.from_now)
+      survey3 = create(:survey, noise_level: 5, created_at: 25.minutes.ago)
+      expect(p_event.nearest_surveys).to eq [survey, survey2, survey3]
+    end
+  end
+
   describe "before_validations" do
     before :each do
       p_event = build(:processed_event)
@@ -75,13 +85,17 @@ RSpec.describe ProcessedEvent, :type => :model do
       end
     end
 
-    describe "nearest_survey" do
-      it "returns survey with nearest timestamp" do
+    context :motion_detected do
+      it "if event with same timestamp(minute) exists set to that" do
+        event = create(:event, display_name: "Aeon Multisensor (Margaret)", sensor_type: 'motion', value: "active")
+        p_event = create(:processed_event, timestamp: event.created_at)
+        expect(p_event.motion_detected).to eq true
+      end
+
+      it "uses previous event if no surveys found for timestamp" do
+        event = create(:event, display_name: "Aeon Multisensor (Margaret)", sensor_type: 'motion', value: "inactive", created_at: 10.minutes.ago)
         p_event = create(:processed_event)
-        survey2 = create(:survey, noise_level: 5, created_at: 11.minutes.ago)
-        survey = create(:survey, noise_level: 5, created_at: 10.minutes.from_now)
-        survey3 = create(:survey, noise_level: 5, created_at: 25.minutes.ago)
-        expect(p_event.nearest_surveys).to eq [survey, survey2, survey3]
+        expect(p_event.motion_detected).to eq false
       end
     end
 

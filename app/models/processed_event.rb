@@ -31,6 +31,7 @@ class ProcessedEvent < ActiveRecord::Base
   before_validation :set_noise_level
   before_validation :set_person_out_value
   before_validation :set_door_closed
+  before_validation :set_motion_detected
 
   def devices
     case user_id
@@ -65,6 +66,12 @@ class ProcessedEvent < ActiveRecord::Base
     .where('created_at < ? AND created_at > ?', timestamp + 1.hour, timestamp - 1.hour)
   end
 
+  def nearest_events
+    @nearest_events ||= events
+    .order(%{ABS(EXTRACT(EPOCH FROM ('#{timestamp.to_formatted_s(:db)}'::timestamp - created_at))) asc} )
+    .where('created_at < ? AND created_at > ?', timestamp + 1.hour, timestamp - 1.hour)
+  end
+
   private
 
   def construct_queries(sensor_type, attribute)
@@ -77,12 +84,25 @@ class ProcessedEvent < ActiveRecord::Base
     if current_event
       eval("self.#{attribute} = #{current_event.value}")
     else
-      return unless previous_event || future_event
+      return if previous_event.nil? || future_event.nil?
       gap = second_difference(previous_event.created_at, future_event.created_at)
       diff = second_difference(previous_event.created_at, timestamp)
       result = (((gap - diff) * previous_event.value.to_f) + (diff * future_event.value.to_f)) / gap
       eval("self.#{attribute} = #{result}")
     end
+  end
+
+  def set_motion_detected
+    event = nearest_events.first
+
+    if event
+      if event.value == 'active'
+        self.motion_detected = true
+      else
+        self.motion_detected = false
+      end
+    end
+    true
   end
 
   def set_door_closed
