@@ -5,7 +5,7 @@ namespace :energy do
     hours = ENV['hours'].to_i if ENV['hours']
     if hours.present?
       minutes = hours * 60
-      ap beginning_time = DateTime.now.beginning_of_hour - hours.minutes
+      beginning_time = DateTime.now.beginning_of_hour - hours.minutes
 
       (0..minutes).each do |m|
         events = ProcessedEvent.create([
