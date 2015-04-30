@@ -36,6 +36,7 @@ gem 'foreman'
 gem 'unicorn'
 gem 'redis'
 gem 'sidekiq'
+gem 'whenever', :require => false
 
 gem 'devise'
 gem 'exception_notification'
