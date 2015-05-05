@@ -1,18 +1,14 @@
 ActiveAdmin.register Survey do
 
-
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+  csv do
+    column :occupants
+    column :temperature_value
+    column :noise_level
+    column :comment
+    column :user_id
+    column :in_out
+    column(:timestamp) { |survey| s.created_at }
+  end
 
 
 end
