@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rubocop', require: false
 gem 'seed_dump'
 
+gem 'table_for_collection'
 gem 'inherited_resources'
 gem 'responders'
 

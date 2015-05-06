@@ -1,8 +1,67 @@
+<%= link_to 'Reset', dashboard_index_path %>
 <%= search_form_for @q, url: dashboard_index_path do |f| %>
 
-  <%= f.label :user_id_eq %>
-  <%= f.search_field :user_id_eq %>
-  <br>
-  //which columns
+  <div class="form-group">
+    <%= f.label :user_id_eq, "Display data for user: " %>
+    <%= f.select(:user_id_eq, {"Margaret" => 1, "Irvan" => 2, "Flora" => 3, "Saidur" => 4}, prompt: "Select User") %>
+  </div>
+
+  <div class="form-group">
+    <label class="checkbox-inline">
+      <%= check_box_tag 'lux_value_column', true, params[:lux_value_column] %> Lux Value
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'temperature_value_column', true, params[:temperature_value_column] %> Temperature Value
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'humidity_value_column', true, params[:humidity_value_column] %>  Humidity Value
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'door_closed_column', true, params[:door_closed_column] %>  Door Closed
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'motion_detected_column', true, params[:motion_detected_column] %>  Motion Detected
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'person_out_column', true, params[:person_out_column] %>  Person Out
+    </label>
+
+    <label class="checkbox-inline">
+      <%= check_box_tag 'noise_level_column', true, params[:noise_level_column] %>  Noise Level
+    </label>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :timestamp_gteq , "Start Date"%>
+    <%= f.text_field :timestamp_gteq, placeholder: "2015-05-05 00:00:00 UTC" %>
+
+    <%=f.label :timestamp_lteq, "End Date" %>
+    <%= f.text_field :timestamp_lteq, placeholder: "2015-05-07 00:00:00 UTC" %>
+  </div>
   <%= f.submit %>
+<% end %>
+<% if params[:q] and params[:q][:user_id_eq] %>
+
+<%= render partial: 'graph', locals: {processed_events: @processed_events, columns: @columns} %>
+
+<div class="scrollable-table">
+  <%= table_for @processed_events, html: {class: 'table table-striped'} do -%>
+    <% column :id, :html => { :th => { :width => "10%" }}%>
+    <% column :lux_value if params[:lux_value_column] %>
+    <% column :temperature_value if params[:temperature_value_column] %>
+    <% column :humidity_value if params[:humidity_value_column] %>
+    <% column :door_closed if params[:door_closed_column] %>
+    <% column :motion_detected if params[:motion_detected_column] %>
+    <% column :person_out if params[:person_out_column] %>
+    <% column :noise_level if params[:noise_level_column]%>
+    <% column :timestamp do |timestamp| %>
+      <% timestamp.to_formatted_s(:long)   %>
+    <% end %>
+  <% end %>
+</div>
 <% end %>
