@@ -7,7 +7,7 @@ ActiveAdmin.register Survey do
     column :comment
     column :user_id
     column :in_out
-    column(:timestamp) { |survey| s.created_at }
+    column(:timestamp) { |s| s.created_at }
   end
 
 
