@@ -1,7 +1,8 @@
-<% @events.each do |event| %>
+<%= search_form_for @q, url: dashboard_index_path do |f| %>
 
-  <%= event.display_name %> <br>
-  <%= event.sensor_type %> <br>
-  <%= event.value %>
-
+  <%= f.label :user_id_eq %>
+  <%= f.search_field :user_id_eq %>
+  <br>
+  //which columns
+  <%= f.submit %>
 <% end %>

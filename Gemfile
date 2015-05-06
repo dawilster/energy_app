@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rubocop', require: false
+gem 'seed_dump'
 
 gem 'inherited_resources'
 gem 'responders'
@@ -32,6 +33,7 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'kaminari'
 gem 'has_scope'
 
+gem 'ransack'
 gem 'foreman'
 gem 'unicorn'
 gem 'redis'

@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
 
   def index
-    @events = Event.where('created_at > ?', 5.days.ago)
+    @q = ProcessedEvent.ransack(params[:q])
+    @processed_events = @q.result.page(params[:page])
   end
 
   def show

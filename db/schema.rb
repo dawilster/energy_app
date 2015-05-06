@@ -73,6 +73,17 @@ ActiveRecord::Schema.define(version: 20150430122701) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "lab_surveys", force: :cascade do |t|
+    t.integer  "room_id"
+    t.float    "hours_spent"
+    t.integer  "temperature_value"
+    t.integer  "noise_level"
+    t.integer  "comfort_value"
+    t.text     "comment"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "processed_events", force: :cascade do |t|
     t.float    "lux_value"
     t.float    "temperature_value"
