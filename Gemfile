@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+group :assets do
+  gem 'jquery-ui-rails'
+end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,7 +27,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rubocop', require: false
+gem 'seed_dump'
 
+gem 'table_for_collection'
 gem 'inherited_resources'
 gem 'responders'
 gem 'seed_dump'
@@ -32,6 +37,7 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'kaminari'
 gem 'has_scope'
 
+gem 'ransack'
 gem 'foreman'
 gem 'unicorn'
 gem 'redis'

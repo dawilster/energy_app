@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :dashboard
+  resources :lab_surveys, only: [:show, :create, :new]
 
   namespace :api do
     namespace :v1 do

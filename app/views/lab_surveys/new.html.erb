@@ -1,0 +1,15 @@
+<%= form_for @lab_survey do |f| %>
+
+  <%= render partial: 'slider', :locals => { f: f, attribute: :temperature_value, text: "Temperature Level"} %>
+
+  <%= render partial: 'slider', :locals => { f: f, attribute: :noise_level, text: "Noise Level"} %>
+
+  <%= render partial: 'slider', :locals => { f: f, attribute: :comfort_value, text: "Comfort Level"} %>
+
+  <div class="form-group">
+    <%= f.label :comment, 'Comment'%>
+    <%= f.text_area :comment, class: 'form-control' %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

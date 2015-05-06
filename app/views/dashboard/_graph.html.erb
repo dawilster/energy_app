@@ -1,0 +1,69 @@
+<div id="graph" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+<script>
+  $(function () {
+    $('#graph').highcharts({
+      chart: {
+          zoomType: 'xy'
+      },
+      title: {
+          text: 'Energy App Data'
+      },
+      subtitle: {
+          text: 'Collected from survey and SmartThing device data'
+      },
+      xAxis: [{
+          categories: <%= processed_events.collect{|x| x.timestamp.to_formatted_s(:short).to_s}.to_s.html_safe %>,
+          crosshair: true
+      }],
+      yAxis: [
+      <% @columns.each.with_index do |column, i| %>
+        {
+          gridLineWidth: 0,
+          labels: {
+              format: '{value}<%= column[:unit] %>',
+              style: {
+                  color: Highcharts.getOptions().colors[<%= i %>]
+              }
+          },
+          title: {
+              text: '<%= column[:name] %>',
+              style: {
+                  color: Highcharts.getOptions().colors[<%= i %>]
+              }
+          },
+          opposite: <%= i % 2 == 0 ? 'false' : 'true' %>
+        }<%= ',' if column != @columns.last %>
+
+      <% end %>
+      ],
+      tooltip: {
+          shared: true
+      },
+      legend: {
+          layout: 'vertical',
+          align: 'center',
+          x: 80,
+          verticalAlign: 'top',
+          y: 55,
+          floating: true,
+          backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+      },
+      series: [
+      <% @columns.each.with_index do |column, i| %>
+      {
+        name: '<%= column[:name]%>',
+        type: 'spline',
+        yAxis: <%= i %>,
+        data: <%= processed_events.map(&column[:name].to_sym).to_s %>,
+        tooltip: {
+            valueSuffix: ' <%= column[:unit] %>'
+        }
+      }<%= ',' if column != @columns.last %>
+
+      <% end %>]
+    });
+  });
+
+
+</script>

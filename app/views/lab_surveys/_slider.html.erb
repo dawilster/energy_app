@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label for="<%= attribute %>"><%= text %>:  <span id="<%= attribute%>-value"></span></label>
+  <div id="<%=attribute%>-slider"></div>
+  <%= f.hidden_field attribute %>
+</div>
+
+<script>
+
+$(function(){
+  initSlider("#<%= attribute %>-slider", "#lab_survey_<%= attribute%>",
+    "#<%= attribute %>-value", null, null, null);
+});
+</script>
