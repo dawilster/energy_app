@@ -10,10 +10,11 @@
 #  power_value       :float
 #  motion_detected   :boolean
 #  person_out        :boolean
-#  timestamp         :datetime
 #  user_id           :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  timestamp         :datetime
+#  noise_level       :integer
 #
 
 require 'rails_helper'

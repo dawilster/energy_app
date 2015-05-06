@@ -5,3 +5,7 @@ env :PATH, ENV['PATH']
 every 6.hours do
   rake "energy:schedule_event_processing"
 end
+
+every 1.hours do
+  rake "energy:fetch_weather"
+end
