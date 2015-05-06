@@ -25,10 +25,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem "typhoeus"
 gem 'rubocop', require: false
 gem 'seed_dump'
-
+gem 'smarter_csv'
 gem 'table_for_collection'
 gem 'inherited_resources'
 gem 'responders'
@@ -68,6 +68,8 @@ group :test do
   gem 'database_cleaner'
   # gem 'json_spec'
   gem 'spring-commands-rspec'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development, :test do

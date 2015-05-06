@@ -1,5 +1,11 @@
 namespace :energy do
 
+  desc "fetches weather"
+  task :fetch_weather => :environment do
+    time = Time.now.in_time_zone("Melbourne")
+    Weather.fetch(time.year, time.month, time.day)
+  end
+
   desc "processes_events"
   task :process_events => :environment do
     hours = ENV['hours'].to_i if ENV['hours']

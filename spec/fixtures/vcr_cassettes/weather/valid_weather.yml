@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.wunderground.com/history/airport/YMML/2015/5/6/DailyHistory.html?format=1&req_city=Melbourne&req_statename=Victoria
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 06 May 2015 08:55:55 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, no-cache="Set-Cookie", private
+      Access-Control-Allow-Origin:
+      - http://www.wunderground.com
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Creationtime:
+      - '0.216'
+      Vary:
+      - Accept-Encoding
+      Content-Type:
+      - text/html; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - DT=1430902555:9637:365-t1; path=/; expires=Fri, 01-Jan-2020 00:00:00 GMT;
+        domain=.wunderground.com
+      - Prefs=FAVS:1|WXSN:1|PWSOBS:1|WPHO:1|PHOT:1|RADC:0|RADALL:0|HIST0:NULL|GIFT:1|PHOTOTHUMBS:50|HISTICAO:YMML*NULL|;
+        path=/; expires=Fri, 01-Jan-2020 00:00:00 GMT; domain=.wunderground.com
+    body:
+      encoding: UTF-8
+      string: |2
+
+        TimeAEST,TemperatureC,Dew PointC,Humidity,Sea Level PressurehPa,VisibilityKm,Wind Direction,Wind SpeedKm/h,Gust SpeedKm/h,Precipitationmm,Events,Conditions,WindDirDegrees,DateUTC<br />
+        12:00 AM,10,4,53,1010,30,North,25.9,,,,Partly Cloudy,350,2015-05-05 14:00:00<br />
+        12:00 AM,10.0,4.0,66,1009,-9999.0,North,25.9,-,N/A,,Clear,350,2015-05-05 14:00:00<br />
+        12:30 AM,10.0,3.0,62,1009,-9999.0,North,24.1,-,N/A,,Clear,350,2015-05-05 14:30:00<br />
+        1:00 AM,10,4,55,1010,,North,25.9,,,,,350,2015-05-05 15:00:00<br />
+        1:00 AM,10.0,4.0,66,1010,-9999.0,North,25.9,-,N/A,,Clear,350,2015-05-05 15:00:00<br />
+        1:30 AM,10.0,4.0,66,1010,-9999.0,North,22.2,-,N/A,,Clear,350,2015-05-05 15:30:00<br />
+        2:00 AM,10,4,60,1010,,North,20.4,,,,,350,2015-05-05 16:00:00<br />
+        2:00 AM,10.0,4.0,66,1010,-9999.0,North,20.4,-,N/A,,Clear,350,2015-05-05 16:00:00<br />
+        2:30 AM,9.0,4.0,71,1010,-9999.0,NNW,20.4,-,N/A,,Clear,340,2015-05-05 16:30:00<br />
+        3:00 AM,8,4,68,1010,30,North,16.7,,,,Partly Cloudy,0,2015-05-05 17:00:00<br />
+        3:00 AM,8.0,4.0,76,1010,-9999.0,North,16.7,-,N/A,,Clear,360,2015-05-05 17:00:00<br />
+        3:30 AM,9.0,4.0,71,1010,-9999.0,NNW,24.1,-,N/A,,Clear,340,2015-05-05 17:30:00<br />
+        4:00 AM,10,4,60,1011,,North,24.1,,,,,350,2015-05-05 18:00:00<br />
+        4:00 AM,10.0,4.0,66,1010,10.0,North,24.1,-,N/A,,Scattered Clouds,350,2015-05-05 18:00:00<br />
+        4:30 AM,9.0,4.0,71,1010,10.0,North,24.1,-,N/A,,Mostly Cloudy,350,2015-05-05 18:30:00<br />
+        5:00 AM,9,4,61,1011,,North,24.1,,,,,350,2015-05-05 19:00:00<br />
+        5:00 AM,9.0,4.0,71,1011,10.0,North,24.1,-,N/A,,Scattered Clouds,350,2015-05-05 19:00:00<br />
+        5:30 AM,10.0,4.0,66,1011,10.0,North,18.5,-,N/A,,Mostly Cloudy,360,2015-05-05 19:30:00<br />
+        6:00 AM,9,4,61,1012,30,NNW,24.1,,,,Partly Cloudy,340,2015-05-05 20:00:00<br />
+        6:00 AM,9.0,4.0,71,1011,10.0,NNW,24.1,-,N/A,,Partly Cloudy,340,2015-05-05 20:00:00<br />
+        6:30 AM,9.0,4.0,71,1011,-9999.0,North,25.9,-,N/A,,Clear,350,2015-05-05 20:30:00<br />
+        7:00 AM,9,4,62,1012,,North,25.9,,,,,350,2015-05-05 21:00:00<br />
+        7:00 AM,9.0,4.0,71,1012,10.0,North,25.9,-,N/A,,Partly Cloudy,350,2015-05-05 21:00:00<br />
+        7:30 AM,9.0,4.0,71,1012,10.0,North,25.9,-,N/A,,Partly Cloudy,350,2015-05-05 21:30:00<br />
+        8:00 AM,10,5,63,1013,,North,27.8,,,,,0,2015-05-05 22:00:00<br />
+        8:00 AM,10.0,5.0,71,1012,10.0,North,27.8,-,N/A,,Partly Cloudy,360,2015-05-05 22:00:00<br />
+        8:30 AM,11.0,5.0,67,1013,10.0,North,27.8,-,N/A,,Partly Cloudy,350,2015-05-05 22:30:00<br />
+        9:00 AM,11,4,54,1014,40,NNW,29.6,,,,Partly Cloudy,330,2015-05-05 23:00:00<br />
+        9:00 AM,11.0,5.0,67,1013,10.0,NNW,29.6,-,N/A,,Partly Cloudy,330,2015-05-05 23:00:00<br />
+        9:30 AM,12.0,5.0,62,1013,10.0,NNW,31.5,-,N/A,,Partly Cloudy,330,2015-05-05 23:30:00<br />
+        10:00 AM,13,5,47,1014,,NNW,27.8,,,,,330,2015-05-06 00:00:00<br />
+        10:00 AM,13.0,5.0,58,1013,10.0,NNW,27.8,-,N/A,,Partly Cloudy,330,2015-05-06 00:00:00<br />
+        10:30 AM,13.0,4.0,54,1013,10.0,NNW,29.6,-,N/A,,Partly Cloudy,340,2015-05-06 00:30:00<br />
+        10:49 AM,13.0,4.0,54,1013,10.0,NNW,31.5,51.9,N/A,,Partly Cloudy,340,2015-05-06 00:49:00<br />
+        11:00 AM,13,4,46,1014,,NNW,35.2,,,,,340,2015-05-06 01:00:00<br />
+        11:00 AM,13.0,5.0,58,1013,10.0,NNW,35.2,-,N/A,,Partly Cloudy,340,2015-05-06 01:00:00<br />
+        11:30 AM,15.0,5.0,51,1013,10.0,NNW,31.5,-,N/A,,Partly Cloudy,340,2015-05-06 01:30:00<br />
+        12:00 PM,15,5,40,1013,40,NNW,33.3,,,,Partly Cloudy,340,2015-05-06 02:00:00<br />
+        12:00 PM,15.0,5.0,51,1013,10.0,NNW,33.3,-,N/A,,Scattered Clouds,340,2015-05-06 02:00:00<br />
+        12:30 PM,15.0,5.0,51,1013,10.0,NNW,31.5,-,N/A,,Mostly Cloudy,340,2015-05-06 02:30:00<br />
+        1:00 PM,15,5,42,1013,,NNW,27.8,,,,,330,2015-05-06 03:00:00<br />
+        1:00 PM,15.0,5.0,51,1012,10.0,NNW,27.8,-,N/A,Rain,Light Rain Showers,330,2015-05-06 03:00:00<br />
+        1:30 PM,14.0,6.0,59,1012,10.0,NNW,29.6,-,N/A,,Mostly Cloudy,330,2015-05-06 03:30:00<br />
+        2:00 PM,15,7,49,1012,,NNW,27.8,,,,,330,2015-05-06 04:00:00<br />
+        2:00 PM,15.0,7.0,59,1012,10.0,NNW,27.8,-,N/A,,Mostly Cloudy,330,2015-05-06 04:00:00<br />
+        2:30 PM,16.0,7.0,55,1012,10.0,NNW,24.1,-,N/A,,Mostly Cloudy,330,2015-05-06 04:30:00<br />
+        3:00 PM,15,7,46,1013,25,NNW,27.8,,,,Mostly Cloudy,330,2015-05-06 05:00:00<br />
+        3:00 PM,15.0,7.0,59,1012,10.0,NNW,27.8,-,N/A,,Mostly Cloudy,330,2015-05-06 05:00:00<br />
+        3:23 PM,15.0,7.0,59,1012,6.0,NNW,25.9,-,N/A,,Mostly Cloudy,330,2015-05-06 05:23:00<br />
+        3:30 PM,12.0,8.0,77,1013,5.0,WSW,40.7,-,N/A,Rain,Rain Showers,250,2015-05-06 05:30:00<br />
+        4:00 PM,12,9,74,1014,,West,22.2,,,,,260,2015-05-06 06:00:00<br />
+        4:00 PM,12.0,9.0,82,1013,10.0,West,22.2,-,N/A,Rain,Light Rain Showers,260,2015-05-06 06:00:00<br />
+        4:30 PM,12.0,8.0,77,1013,10.0,West,24.1,-,N/A,Rain,Light Rain Showers,270,2015-05-06 06:30:00<br />
+        5:00 PM,13,8,64,1014,,WNW,24.1,,,,,300,2015-05-06 07:00:00<br />
+        5:00 PM,13.0,8.0,72,1013,10.0,WNW,24.1,-,N/A,,Mostly Cloudy,300,2015-05-06 07:00:00<br />
+        6:00 PM,13,6,52,1014,30,West,24.1,,,,Partly Cloudy,270,2015-05-06 08:00:00<br />
+    http_version: 
+  recorded_at: Wed, 06 May 2015 08:55:56 GMT
+recorded_with: VCR 2.9.3
