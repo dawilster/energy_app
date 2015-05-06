@@ -32,7 +32,7 @@
                   color: Highcharts.getOptions().colors[<%= i %>]
               }
           },
-          opposite: true
+          opposite: <%= i % 2 == 0 ? 'false' : 'true' %>
         }<%= ',' if column != @columns.last %>
 
       <% end %>
@@ -42,7 +42,7 @@
       },
       legend: {
           layout: 'vertical',
-          align: 'left',
+          align: 'center',
           x: 80,
           verticalAlign: 'top',
           y: 55,
