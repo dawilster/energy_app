@@ -7,8 +7,10 @@ class Api::V1::SurveysController < BaseApiController
       :noise_level,
       :temperature_value,
       :in_out,
-      :commment,
-      :user_id
+      :comment,
+      :user_id,
+      :date,
+      :time
     ])
   end
 end
