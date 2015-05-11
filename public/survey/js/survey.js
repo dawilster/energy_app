@@ -52,7 +52,7 @@ function postData(){
 	$.ajax({
 	  type: "POST",
 	  url: "/api/v1/surveys.json",
-	  data: {survey: {user_id: user_id, occupants: people_num, temperature_value: cool, noise_level:noise, in_out: inout, comment: usercomment}},
+	  data: {survey: {date: date, time: time,user_id: user_id, occupants: people_num, temperature_value: cool, noise_level:noise, in_out: inout, comment: usercomment}},
 	  success: function(){
 	  },
 	  dataType: "json"
