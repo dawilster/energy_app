@@ -15,4 +15,16 @@
 
 # Survey submissions are from the web app
 class Survey < ActiveRecord::Base
+  attr_accessor :date, :time
+
+  before_validation :convert_date_time
+
+  private
+
+  def convert_date_time
+    if date.present? && time.present?
+      self.created_at = self.updated_at = Time.zone.parse("#{date} #{time} Melbourne")
+    end
+  end
+
 end
