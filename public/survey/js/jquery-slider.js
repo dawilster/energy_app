@@ -1,14 +1,14 @@
 $(function() {
 // set up an array to hold the coolness
-var coolness = ["Burning", " ", " "," ", "Normal", " "," ", " ", "Freezing"];
-var noisyness = ["Silence", " ", " "," ", "Normal", " ", " "," ", "Super Noisy"];
+var coolness = ["Burning", " "," ", "Normal", " ", " ", "Freezing"];
+var noisyness = ["Silence", " "," ", "Normal", " "," ", "Super Noisy"];
 
   $("#slider-cold").slider({
     animate:"medium",
     orientation: "horizontal",
     min: 0,
     max: coolness.length-1,
-    value: 4,
+    value: 3,
     slide: function( event, ui ) {
               var coldlevel=ui.value;
               var feeling="Normal";
@@ -23,21 +23,15 @@ var noisyness = ["Silence", " ", " "," ", "Normal", " ", " "," ", "Super Noisy"]
                     feeling="Hot";
                     break;
                 case 3:
-                    feeling="a bit Hot";
-                    break;
-                case 4:
                     feeling="Normal";
                     break;
-                case 5:
-                    feeling="a bit Cold";
-                    break;
-                case 6:
+                case 4:
                     feeling="Cold";
                     break;
-                case 7:
+                case 5:
                     feeling="Very Cold";
                     break;
-                case 8:
+                case 6:
                     feeling="Freezing";
                     break;
               }
@@ -56,7 +50,7 @@ var noisyness = ["Silence", " ", " "," ", "Normal", " ", " "," ", "Super Noisy"]
     orientation: "horizontal",
     min: 0,
     max: noisyness.length-1,
-    value: 4,
+    value: 3,
     slide: function( event, ui ) {
               var coldlevel=ui.value;
               var feeling="Normal";
@@ -71,21 +65,15 @@ var noisyness = ["Silence", " ", " "," ", "Normal", " ", " "," ", "Super Noisy"]
                     feeling="Quiet";
                     break;
                 case 3:
-                    feeling="a bit Quiet";
-                    break;
-                case 4:
                     feeling="Normal";
                     break;
-                case 5:
-                    feeling="a bit Noisy";
-                    break;
-                case 6:
+                case 4:
                     feeling="Noisy";
                     break;
-                case 7:
+                case 5:
                     feeling="Very Noisy";
                     break;
-                case 8:
+                case 6:
                     feeling="Super Noisy";
                     break;
               }
