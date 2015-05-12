@@ -85,7 +85,7 @@ var noisyness = ["Silence", " ", " "," ", "Normal", " ", " "," ", "Super Noisy"]
                 case 7:
                     feeling="Very Noisy";
                     break;
-                case 6:
+                case 8:
                     feeling="Super Noisy";
                     break;
               }
