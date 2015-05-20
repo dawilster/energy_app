@@ -15,4 +15,4 @@ before_script:
 deploy:
   provider: cloud66
   redeployment_hook:
-    production: "https://hooks.cloud66.com/stacks/redeploy/a10eaad53152560d60a989663c75cd6d/6fb2c8ed128c167d55205ec54cc9e884"
+    production: "https://hooks.cloud66.com/stacks/redeploy/a10eaad53152560d60a989663c75cd6d/a792bf433ba5e754b4a5947245b92b4c"
