@@ -33,6 +33,8 @@ class ProcessedEvent < ActiveRecord::Base
   before_validation :set_person_out_value
   before_validation :set_door_closed
   before_validation :set_motion_detected
+  before_validation :set_occupants
+  before_validation :set_outside_temperature
 
   def devices
     case user_id
@@ -128,6 +130,32 @@ class ProcessedEvent < ActiveRecord::Base
 
   def set_humdity_value
     construct_queries('humidity', :humidity_value)
+  end
+
+  def set_occupants
+    survey = nearest_surveys.first
+    if survey
+      self.occupants = survey.occupants
+    end
+    true
+  end
+
+  def set_outside_temperature
+    collection = Weather
+
+    previous_weather = collection.where('timestamp < ?', timestamp).order(created_at: :desc).first
+    current_weather = collection.where('timestamp < ? AND created_at > ?', timestamp.beginning_of_minute + 1.minute, timestamp.beginning_of_minute).first
+    future_weather = collection.where('timestamp > ?', timestamp).order(created_at: :asc).first
+
+    if current_weather
+      self.outside_temperature = current_weather.temperature
+    else
+      return if previous_weather.nil? || future_weather.nil?
+      gap = second_difference(previous_weather.timestamp, future_weather.timestamp)
+      diff = second_difference(previous_weather.timestamp, timestamp)
+      result = (((gap - diff) * previous_weather.temperature) + (diff * future_weather.temperature)) / gap
+      self.outside_temperature = result
+    end
   end
 
   def set_person_out_value

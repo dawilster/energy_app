@@ -131,6 +131,22 @@ RSpec.describe ProcessedEvent, :type => :model do
       end
     end
 
+    context :occupants do
+      it "uses survey if its within an hour of results" do
+        survey = create(:survey, occupants: 5, created_at: 25.minutes.ago)
+        p_event = create(:processed_event)
+        expect(p_event.occupants).to eq 5
+      end
+
+      it "if no survey within hour long window sets to nil" do
+        create(:survey, noise_level: 5, created_at: 2.hours.from_now)
+        create(:survey, noise_level: 5, created_at: 61.minutes.ago)
+
+        p_event = create(:processed_event)
+        expect(p_event.occupants).to eq 0
+      end
+    end
+
     context :person_out do
       it "uses survey if its within an hour of results" do
         survey = create(:survey, in_out: 'in', created_at: 25.minutes.ago)
@@ -156,6 +172,21 @@ RSpec.describe ProcessedEvent, :type => :model do
 
         p_event = create(:processed_event)
         expect(p_event.person_out).to eq nil
+      end
+    end
+
+    context :outside_temperature do
+      it "if weather with same timestamp(minute) exists set to that" do
+        weather = create(:weather, temperature: 20.5)
+        p_event = create(:processed_event, timestamp: weather.timestamp)
+        expect(p_event.outside_temperature).to eq weather.temperature
+      end
+
+      it "uses algorithm to calculate value between 2 events" do
+        weather = create(:weather, temperature: 20)
+        other_weather = create(:weather, temperature: 25, timestamp: weather.timestamp + 5.minutes)
+        p_event = create(:processed_event, timestamp: weather.timestamp + 3.minutes)
+        expect(p_event.outside_temperature).to eq 23.0
       end
     end
 
