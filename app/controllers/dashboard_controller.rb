@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
     @processed_events = @q.result.page(params[:page]).per(120)
 
     selectable_columns
-    @coder = HTMLEntities.new
+    @short_times = @processed_events.collect{|x| x.timestamp.to_formatted_s(:short).to_s}
   end
 
   def show
