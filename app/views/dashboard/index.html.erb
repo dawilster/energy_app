@@ -32,17 +32,23 @@
     </label>
 
     <label class="checkbox-inline">
+      <%= check_box_tag 'occupants_column', true, params[:occupants_column] %>  Occupancy
+    </label>
+
+    <label class="checkbox-inline">
       <%= check_box_tag 'noise_level_column', true, params[:noise_level_column] %>  Noise Level
     </label>
   </div>
 
   <div class="form-group">
-    <%= f.label :timestamp_gteq , "Start Date"%>
-    <%= f.text_field :timestamp_gteq, placeholder: "2015-05-05 00:00:00 UTC" %>
-
-    <%=f.label :timestamp_lteq, "End Date" %>
-    <%= f.text_field :timestamp_lteq, placeholder: "2015-05-07 00:00:00 UTC" %>
+    <%= f.label :timestamp_gteq , "Start Date - Time (2 hours starting from): "%><br>
+    <%= f.datetime_select :timestamp_gteq  %>
   </div>
+
+  <div class="form-group">
+    <label for="">0 = false, 1 = true</label>
+  </div>
+
   <%= f.submit %>
 <% end %>
 <% if params[:q] and params[:q][:user_id_eq] %>
@@ -59,6 +65,7 @@
     <% column :motion_detected if params[:motion_detected_column] %>
     <% column :person_out if params[:person_out_column] %>
     <% column :noise_level if params[:noise_level_column]%>
+    <% column :occupants if params[:occupants_column]%>
     <% column :timestamp do |timestamp| %>
       <% timestamp.to_formatted_s(:long)   %>
     <% end %>

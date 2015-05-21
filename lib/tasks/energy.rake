@@ -30,7 +30,7 @@ namespace :energy do
   task :schedule_event_processing => :environment do
     last_event = ProcessedEvent.last
     if last_event
-      minutes = minute_difference(last_event.timestamp, Time.now)
+      minutes = minute_difference(last_event.timestamp, Time.now - 10.minutes)
       (1..minutes).each do |m|
         events = ProcessedEvent.create([
           {user_id: 1, timestamp: last_event.timestamp + m.minutes},

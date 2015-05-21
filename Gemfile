@@ -32,6 +32,7 @@ gem 'smarter_csv'
 gem 'table_for_collection'
 gem 'inherited_resources'
 gem 'responders'
+
 gem 'active_model_serializers', '~> 0.8'
 gem 'kaminari'
 gem 'has_scope'
