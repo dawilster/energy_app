@@ -112,7 +112,7 @@ RSpec.describe ProcessedEvent, :type => :model do
         create(:survey, noise_level: 5, created_at: 61.minutes.ago)
 
         p_event = create(:processed_event)
-        expect(p_event.noise_level).to eq nil
+        expect(p_event.noise_level).to eq "null"
       end
     end
 
@@ -171,7 +171,7 @@ RSpec.describe ProcessedEvent, :type => :model do
         create(:survey, noise_level: 5, created_at: 61.minutes.ago)
 
         p_event = create(:processed_event)
-        expect(p_event.person_out).to eq nil
+        expect(p_event.person_out).to eq "null"
       end
     end
 
