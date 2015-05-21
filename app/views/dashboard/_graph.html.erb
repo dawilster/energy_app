@@ -1,10 +1,11 @@
 <div id="graph" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
+
 <script>
-  $(function () {
-    $('#graph').highcharts({
+    var chart = new Highcharts.Chart({
       chart: {
-          zoomType: 'xy'
+          zoomType: 'xy',
+          renderTo: 'graph'
       },
       title: {
           text: 'Energy App Data'
@@ -13,7 +14,7 @@
           text: 'Collected from survey and SmartThing device data'
       },
       xAxis: [{
-          categories: <%= processed_events.collect{|x| x.timestamp.to_formatted_s(:short).to_s}.to_s.html_safe %>,
+          categories: <%= @short_times.to_s.html_safe %>,
           crosshair: true
       }],
       yAxis: [
@@ -52,19 +53,35 @@
       },
       series: [
       <% @columns.each.with_index do |column, i| %>
-      {
-        name: '<%= column[:name]%>',
-        type: '<%= column[:type]%>',
-        yAxis: <%= i %>,
-        data: <%=raw processed_events.collect{|e| e.send(column[:name] )}.to_s.gsub(/\s|"|'/, '') %>,
-        tooltip: {
-            valueSuffix: ' <%= column[:unit] %>'
-        }
-      }<%= ',' if column != @columns.last %>
-
+        {
+        <% if column[:name] == "survey_flag" %>
+          type : 'flags',
+          onSeries: '1',
+          data: [{
+              x: 60,
+              title: 'Survey'
+          }, {
+              x: 20,
+              title: 'Survey'
+          },{
+              x: 45,
+              title: 'Survey'
+          }],
+          width: 45,
+          showInLegend: false
+        <% else %>
+          id: '<%= i %>',
+          name: '<%= column[:name]%>',
+          type: '<%= column[:type]%>',
+          yAxis: <%= i %>,
+          data: <%=raw processed_events.collect{|e| e.send(column[:name] )}.to_s.gsub(/\s|"|'/, '') %>,
+          tooltip: {
+              valueSuffix: ' <%= column[:unit] %>'
+          }
+        <% end %>
+        }<%= ',' if column != @columns.last %>
       <% end %>]
     });
-  });
 
 
 </script>
