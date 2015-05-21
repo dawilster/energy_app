@@ -59,16 +59,21 @@
           onSeries: '1',
           data: [{
               x: 60,
+              text: "occupants: 5, noise_level: 3, heat_level: 2",
               title: 'Survey'
           }, {
               x: 20,
+              text: "occupants: 5, noise_level: 3, heat_level: 2",
               title: 'Survey'
           },{
               x: 45,
+              text: "occupants: 5, noise_level: 3, heat_level: 2",
               title: 'Survey'
           }],
           width: 45,
-          showInLegend: false
+          height: 15,
+          showInLegend: false,
+          shape: 'circlepin'
         <% else %>
           id: '<%= i %>',
           name: '<%= column[:name]%>',
