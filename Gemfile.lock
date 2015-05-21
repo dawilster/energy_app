@@ -130,6 +130,7 @@ GEM
       activesupport (>= 3.2, < 5)
     hike (1.2.3)
     hitimes (1.2.2)
+    htmlentities (4.3.3)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -319,6 +320,7 @@ DEPENDENCIES
   factory_girl_rails
   foreman
   has_scope
+  htmlentities
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails

@@ -59,6 +59,10 @@ class ProcessedEvent < ActiveRecord::Base
     ["battery", "switch", "motion", "illuminance", "humidity", "contact", "power", "temperature"]
   end
 
+  def self.column_names
+    super | ["survey_flag"]
+  end
+
   def second_difference(start_time, end_time)
     elapsed_seconds = ((end_time - start_time) / 60).to_i
   end
@@ -73,6 +77,20 @@ class ProcessedEvent < ActiveRecord::Base
     @nearest_events ||= events
     .order(%{ABS(EXTRACT(EPOCH FROM ('#{timestamp.to_formatted_s(:db)}'::timestamp - created_at))) asc} )
     .where('created_at < ? AND created_at > ?', timestamp + 1.hour, timestamp - 1.hour)
+  end
+
+  def person_out
+    return 'null' if read_attribute(:person_out).nil?
+    read_attribute(:person_out)
+  end
+
+  def noise_level
+    return 'null' if read_attribute(:person_out).nil?
+    read_attribute(:person_out)
+  end
+
+  def survey_flag
+
   end
 
   private
