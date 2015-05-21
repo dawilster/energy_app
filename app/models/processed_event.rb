@@ -85,12 +85,8 @@ class ProcessedEvent < ActiveRecord::Base
   end
 
   def noise_level
-    return 'null' if read_attribute(:person_out).nil?
-    read_attribute(:person_out)
-  end
-
-  def survey_flag
-
+    return 'null' if read_attribute(:noise_level).nil?
+    read_attribute(:noise_level)
   end
 
   private
