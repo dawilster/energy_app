@@ -57,23 +57,21 @@
         <% if column[:name] == "survey_flag" %>
           type : 'flags',
           onSeries: '1',
-          data: [{
-              x: 60,
-              text: "occupants: 5, noise_level: 3, heat_level: 2",
-              title: 'Survey'
-          }, {
-              x: 20,
-              text: "occupants: 5, noise_level: 3, heat_level: 2",
-              title: 'Survey'
-          },{
-              x: 45,
-              text: "occupants: 5, noise_level: 3, heat_level: 2",
-              title: 'Survey'
-          }],
-          width: 45,
-          height: 15,
+          data: [
+          <% @surveys.each do |survey| %>
+            {
+              x: <%= @short_times.index(survey.short_timestamp)%>,
+              title: "occupants: <%=survey.occupants %>, <br>noise_level: <%=survey.noise_level %>, <br>heat_level: <%=survey.temperature_value %><br>in_out: <%= survey.in_out%>",
+              text: "<%= survey.comment%>"
+            }<%= ',' if survey != @surveys.last %>
+          <% end %>
+          ],
+          width: 100,
+          height: 60,
           showInLegend: false,
-          shape: 'circlepin'
+          shape: 'flag',
+          y: -80,
+          useHTML: true
         <% else %>
           id: '<%= i %>',
           name: '<%= column[:name]%>',

@@ -4,6 +4,8 @@ class DashboardController < ApplicationController
     @q = ProcessedEvent.ransack(params[:q])
     @processed_events = @q.result.page(params[:page]).per(120)
 
+    @surveys = @processed_events.map(&:nearest_surveys).flatten.uniq
+
     selectable_columns
     @short_times = @processed_events.collect{|x| x.timestamp.to_formatted_s(:short).to_s}
   end

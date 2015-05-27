@@ -19,6 +19,10 @@ class Survey < ActiveRecord::Base
 
   before_validation :convert_date_time
 
+  def short_timestamp
+    created_at.to_formatted_s(:short).to_s
+  end
+
   private
 
   def convert_date_time
