@@ -67,7 +67,11 @@
             <p class="text-capitalize">
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Name: <b id="name"></b>
             </p>
-            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date: <b id="date"></b></p>
+            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date: <b id="date"></b>
+            <button type="button" id="changeDatebtn"class="btn btn-danger btn-xs" onclick="inputDate()">Edit Date</button>
+            <input type="date" name="usr_date" id="usrdate" value="">
+            <button type="button" id="showDatebtn" class="btn btn-primary btn-xs" onclick="addDate()">Save Date</button>
+            </p>
             <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time: <b id="time"></b>
             <button type="button" id="changeTimebtn"class="btn btn-danger btn-xs" onclick="inputTime()">Change Time</button>
             <input type="time" name="usr_time" id="usrtime" value="">
