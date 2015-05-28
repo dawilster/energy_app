@@ -1,0 +1,3 @@
+<%= CSV.generate_line @csv_columns %>
+<% @processed_events.each do |event| %>
+<%=CSV.generate_line(event.event_attributes(@csv_columns))%><% end %>

@@ -58,6 +58,7 @@
 <% if params[:q] and params[:q][:user_id_eq] %>
 
 <%= render partial: 'graph', locals: {processed_events: @processed_events, columns: @columns} %>
+<%= link_to 'CSV Export', dashboard_index_path(format: :csv) %>
 
 <div class="scrollable-table">
   <%= table_for @processed_events, html: {class: 'table table-striped'} do -%>

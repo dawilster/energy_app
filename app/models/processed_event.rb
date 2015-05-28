@@ -89,6 +89,14 @@ class ProcessedEvent < ActiveRecord::Base
     read_attribute(:noise_level)
   end
 
+  def event_attributes(columns)
+    event_attributes = []
+    columns.each do |column|
+      event_attributes << self.send(column)
+    end
+    return event_attributes
+  end
+
   private
 
   def construct_queries(sensor_type, attribute)
