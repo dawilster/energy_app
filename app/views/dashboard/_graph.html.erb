@@ -45,9 +45,9 @@
       legend: {
           layout: 'vertical',
           align: 'center',
-          x: 80,
+          x: 300,
           verticalAlign: 'top',
-          y: 55,
+          y: -40,
           floating: true,
           backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
       },
@@ -77,7 +77,7 @@
           name: '<%= column[:name]%>',
           type: '<%= column[:type]%>',
           yAxis: <%= i %>,
-          data: <%=raw processed_events.collect{|e| e.send(column[:name] )}.to_s.gsub(/\s|"|'/, '') %>,
+          data: <%=raw processed_events.collect{|e| e.send("#{column[:name]}_formatted")}.to_s.gsub(/\s|"|'/, '') %>,
           tooltip: {
               valueSuffix: ' <%= column[:unit] %>'
           }

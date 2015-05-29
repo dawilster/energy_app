@@ -79,15 +79,15 @@ class ProcessedEvent < ActiveRecord::Base
     .where('created_at < ? AND created_at > ?', timestamp + 1.hour, timestamp - 1.hour)
   end
 
-  def person_out
-    return 'null' if read_attribute(:person_out).nil?
-    read_attribute(:person_out)
-  end
+  # def person_out
+  #   return 'null' if read_attribute(:person_out).nil?
+  #   read_attribute(:person_out)
+  # end
 
-  def noise_level
-    return 'null' if read_attribute(:noise_level).nil?
-    read_attribute(:noise_level)
-  end
+  # def noise_level
+  #   return 'null' if read_attribute(:noise_level).nil?
+  #   read_attribute(:noise_level)
+  # end
 
   def event_attributes(columns)
     event_attributes = []
@@ -95,6 +95,47 @@ class ProcessedEvent < ActiveRecord::Base
       event_attributes << self.send(column)
     end
     return event_attributes
+  end
+
+  #formatted values
+  def lux_value_formatted
+    lux_value.round(2)
+  end
+
+  def occupants_formatted
+    occupants
+  end
+
+  def temperature_value_formatted
+    temperature_value.round(2)
+  end
+
+  def humidity_value_formatted
+    humidity_value.round(2)
+  end
+
+  def door_closed_formatted
+    return 1 if door_closed
+    0
+  end
+
+  def power_value_formatted
+    power_value.round(2)
+  end
+
+  def motion_detected_formatted
+    return 1 if motion_detected
+    0
+  end
+
+  def person_out_formatted
+    return 1 if person_out
+    0
+  end
+
+  def noise_level_formatted
+    return 0 if noise_level.nil?
+    noise_level
   end
 
   private
@@ -196,4 +237,5 @@ class ProcessedEvent < ActiveRecord::Base
     survey = nearest_surveys.first
     self.noise_level = survey.noise_level if survey
   end
+
 end
