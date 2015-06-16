@@ -13,6 +13,14 @@ ActiveAdmin.register OpenSurvey do
   #   permitted << :other if resource.something?
   #   permitted
   # end
-
+  csv do
+    column :location
+    column :happy_level
+    column :excited_level
+    column :safe_level
+    column :peace_level
+    column :comment
+    column(:timestamp) { |s| s.created_at }
+  end
 
 end
