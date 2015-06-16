@@ -2,19 +2,21 @@
 #
 # Table name: processed_events
 #
-#  id                :integer          not null, primary key
-#  lux_value         :float
-#  temperature_value :float
-#  humidity_value    :float
-#  door_closed       :boolean
-#  power_value       :float
-#  motion_detected   :boolean
-#  person_out        :boolean
-#  user_id           :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  timestamp         :datetime
-#  noise_level       :integer
+#  id                  :integer          not null, primary key
+#  lux_value           :float
+#  temperature_value   :float
+#  humidity_value      :float
+#  door_closed         :boolean
+#  power_value         :float
+#  motion_detected     :boolean
+#  person_out          :boolean
+#  user_id             :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  timestamp           :datetime
+#  noise_level         :integer
+#  occupants           :integer          default(0)
+#  outside_temperature :float            default(0.0)
 #
 
 require 'rails_helper'
