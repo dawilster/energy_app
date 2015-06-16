@@ -1,0 +1,7 @@
+/************************************************************/
+/*						jQuery-Slider CSS					*/
+/************************************************************/
+#slider-happy, #slider-excited, #slider-safe, #slider-peace, {margin: 10px;}
+#happy, #excited, #safe, #peace{width:45%;border:0;font-weight:bold;background-color: #F0EFE2}
+.ui-slider .ui-slider-handle {background: #22313F;}
+

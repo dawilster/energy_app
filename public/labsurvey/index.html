@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	  <title>Emometer</title>
+
+  	<!-- Bootstrap CSS CDN-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link href="css/main.css" rel="stylesheet">
+
+    <!--Bootstrap Switch-->
+    <link href="css/bootstrap-switch.css" rel="stylesheet">
+
+    <!--Jquery Slider pips-->
+    <!-- plus a jQuery UI theme, here I use "flick" -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+    <link href="css/jquery-ui-slider-pips.css" rel="stylesheet">
+
+    <!--Jquery Slider-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="css/jquery-slider.css" rel="stylesheet">
+
+    <!--Icon-->
+    <link rel="apple-touch-icon" href="http://numbat.cs.rmit.edu.au/~s3407672/energyproject/iPad@2x-2.png"/>
+    <link rel="icon" href="http://numbat.cs.rmit.edu.au/~s3407672/energyproject/iPad@2x-2.png" sizes="192x192" />
+    <link rel="icon" href="http://numbat.cs.rmit.edu.au/~s3407672/energyproject/iPad@2x-2.png" sizes="128x128" />
+
+    </head>
+
+	<body>
+    <!--nav bar-->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+
+          <a class="navbar-brand" href="index.html">
+            <i class="fa fa-bolt fa-lg"></i> EmoMeter</a>
+        </div>
+
+    </nav>
+    <!--end of nav bar-->
+
+	<div class="container">
+      <div class="row">
+        <div class="col-xs-0 col-sm-2 col-md-3"></div>
+        <div class="col-xs-12 col-sm-8 col-md-6">
+          <!--well-->
+          <div class="well" id="userinfo">
+            <!-- <p><i class="fa fa-calendar"></i> Date: <b id="date"></b></p>
+            <p><i class="fa fa-clock-o"></i> Time: <b id="time"></b></p> -->
+
+            <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Date: <b id="date"></b>
+            <button type="button" id="changeDatebtn"class="btn btn-danger btn-xs" onclick="inputDate()">Edit Date</button>
+            <input type="date" name="usr_date" id="usrdate" value="">
+            <button type="button" id="showDatebtn" class="btn btn-primary btn-xs" onclick="addDate()">Save Date</button>
+            </p>
+
+            <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Time: <b id="time"></b>
+            <button type="button" id="changeTimebtn"class="btn btn-danger btn-xs" onclick="inputTime()">Change Time</button>
+            <input type="time" name="usr_time" id="usrtime" value="">
+            <button type="button" id="showTimebtn" class="btn btn-primary btn-xs" onclick="addtime()">Save Time</button>
+            </p>
+
+            <p><i class="fa fa-building-o"></i> Location:
+                <select class="location" onchange="otherLocation();">
+                  <option value="14.10.30">14.10.30</option>
+                  <option value="14.10.31">14.10.31</option>
+                  <option value="14.10.32">14.10.32</option>
+                  <option value="14.10.02">14.10.02</option>
+                  <option value="14.10.03">14.10.03</option>
+                  <option value="14.10.06">14.10.06</option>
+                  <option value="other" >other</option>
+                </select>
+                <p><input type="text" id="usrLocation" placeholder="Room Number" style="display:none" onchange="enterLocation();"/></p>
+            </p>
+          </div><!--well-->
+        </div><!--col-xs-10-->
+      </div><!--row-->
+
+      <div class="row">
+        <div class="col-xs-0 col-sm-2 col-md-3"></div>
+        <div class="col-xs-12 col-sm-8 col-md-6">
+          <form>
+            <div class="row">
+                <p><b>Happiness:</b> <input type="text" name="happy" id="happy" value="0" readonly/></p>
+                <div class="sad col-xs-1"></div>
+                <div id="slider-happy" style="margin:5% 0 10% 0" class="col-xs-8"></div> <!--slider-->
+                <div class="happy col-xs-1 pull-right"></div>
+            </div>
+
+            <div class="row">
+                <p><b>Excitedness:</b> <input type="text" name="excited" id="excited" value="0" readonly/></p>
+                <div class="bored col-xs-1"></div>
+                <div id="slider-excited" style="margin:5% 0 10% 0" class="col-xs-8"></div> <!--slider-->
+                <div class="exciting col-xs-1 pull-right"></div>
+            </div>
+
+            <div class="row">
+                <p><b>Safeness:</b> <input type="text" name="safe" id="safe" value="0" readonly/></p>
+                <div class="scare col-xs-1"></div>
+                <div id="slider-safe" style="margin:5% 0 10% 0" class="col-xs-8"></div> <!--slider-->
+                <div class="safe col-xs-1 pull-right"></div>
+            </div>
+
+            <div class="row">
+                <p><b>Peacefulness:</b> <input type="text" name="peace" id="peace" value="0" readonly/></p>
+                <div class="angry col-xs-1"></div>
+                <div id="slider-peace" style="margin:5% 0 10% 0" class="col-xs-8"></div> <!--slider-->
+                <div class="peace col-xs-1 pull-right"></div>
+            </div>
+
+            <!--input for post data-->
+            <input type="hidden" name="date" value="" id="dateinput">
+            <input type="hidden" name="time" value="" id="timeinput">
+            <input type="hidden" name="location" value="14.10.30" id="locationinput">
+            <input type="hidden" name="happy_level" value="0" id="happy_level">
+            <input type="hidden" name="excited_level" value="0" id="excited_level">
+            <input type="hidden" name="safe_level" value="0" id="safe_level">
+            <input type="hidden" name="peace_level" value="0" id="peace_level">
+
+            <br/>
+            <div class="row col-xs-12">
+                <p><b>Comments:</b></p>
+                <textarea class="form-control" rows="3" id="comment" placeholder="Enter Comments Here (Optional)"></textarea>
+                <button type="submit" name="submitted" class="btn btn-danger btn-lg pull-right submitted">
+                Submit
+                </button>
+            </div>
+          </form>
+        </div>
+      </div><!--row-->
+    </div><!--container-->
+
+	<!-- Bootstrap core JavaScript (CDN)
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core JavaScript (local)
+    ================================================== -->
+    <script src="js/highlight.js"></script>
+    <script src="js/main.js"></script>
+
+    <!--Date and time-->
+    <script src="js/time.js"></script>
+
+    <!--jQuery Slider-->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/jquery-slider.js"></script>
+
+    <!--Jquery Slider pips-->
+    <!-- include the jQuery and jQuery UI scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="js/jquery-ui-slider-pips.js"></script>
+
+    <!-- Bootstrap Switch-->
+    <script src="js/bootstrap-switch.js"></script>
+
+    <!-- survey js -->
+    <script type="text/javascript" src="js/survey.js"></script>
+	</body>
+</html>
