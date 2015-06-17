@@ -4,6 +4,10 @@ var happiness = ["Sad", " ", " "," ", "Normal", " ", " "," ", "Happy"];
 var excitedness = ["Bored", " ", " "," ", "Normal", " ", " "," ", "Excited"];
 var safeness = ["Scare", " ", " "," ", "Normal", " ", " "," ", "Safe"];
 var peacefulness = ["Angry", " ", " "," ", "Normal", " ", " "," ", "Peace"];
+var coolness = ["Hot", " ", " "," ", "Normal",  " ", " ", " ", "Cold"];
+var crowdedness = ["Empty", " ", " "," ", "Normal",  " ", " ", " ", "Crowded"];
+var noisyness = ["Quiet", " ", " "," ", "Normal", " ", " "," ", "Noisy"];
+var overall = ["Bad", " ", " "," ", "Normal", " ", " "," ", "Good"];
 
   $("#slider-happy").slider({
     animate:"medium",
@@ -197,5 +201,196 @@ var peacefulness = ["Angry", " ", " "," ", "Normal", " ", " "," ", "Peace"];
         labels: peacefulness
   });
 
+  $("#slider-cold").slider({
+    animate:"medium",
+    orientation: "horizontal",
+    min: 0,
+    max: coolness.length-1,
+    value: 4,
+    slide: function( event, ui ) {
+              var coldlevel=ui.value;
+              var feeling="Normal";
+              switch(coldlevel) {
+                case 0:
+                    feeling="-4";
+                    break;
+                case 1:
+                    feeling="-3";
+                    break;
+                case 2:
+                    feeling="-2";
+                    break;
+                case 3:
+                    feeling="-1";
+                    break;
+                case 4:
+                    feeling="0";
+                    break;
+                case 5:
+                    feeling="1";
+                    break;
+                case 6:
+                    feeling="2";
+                    break;
+                case 7:
+                    feeling="3";
+                    break;
+                case 8:
+                    feeling="4";
+                    break;
+              }
+              $( "#cold" ).val(feeling);
+              $( "#cold_level" ).val(feeling);   
+            }
+
+  })
+  .slider("pips", {
+        rest: "label",
+        labels: coolness
+  });
+
+  $("#slider-crowd").slider({
+    animate:"medium",
+    orientation: "horizontal",
+    min: 0,
+    max: crowdedness.length-1,
+    value: 4,
+    slide: function( event, ui ) {
+              var crowdlevel=ui.value;
+              var feeling="Normal";
+              switch(crowdlevel) {
+                case 0:
+                    feeling="-4";
+                    break;
+                case 1:
+                    feeling="-3";
+                    break;
+                case 2:
+                    feeling="-2";
+                    break;
+                case 3:
+                    feeling="-1";
+                    break;
+                case 4:
+                    feeling="0";
+                    break;
+                case 5:
+                    feeling="1";
+                    break;
+                case 6:
+                    feeling="2";
+                    break;
+                case 7:
+                    feeling="3";
+                    break;
+                case 8:
+                    feeling="4";
+                    break;
+              }
+              $( "#crowd" ).val(feeling);
+              $( "#crowd_level" ).val(feeling);  
+            }
+
+  })
+  .slider("pips", {
+        rest: "label",
+        labels: crowdedness
+  });
+
+  $("#slider-noisy").slider({
+    animate:"medium",
+    orientation: "horizontal",
+    min: 0,
+    max: noisyness.length-1,
+    value: 4,
+    slide: function( event, ui ) {
+              var noiselevel=ui.value;
+              var feeling="Normal";
+              switch(noiselevel) {
+                case 0:
+                    feeling="-4";
+                    break;
+                case 1:
+                    feeling="-3";
+                    break;
+                case 2:
+                    feeling="-2";
+                    break;
+                case 3:
+                    feeling="-1";
+                    break;
+                case 4:
+                    feeling="0";
+                    break;
+                case 5:
+                    feeling="1";
+                    break;
+                case 6:
+                    feeling="2";
+                    break;
+                case 7:
+                    feeling="3";
+                    break;
+                case 8:
+                    feeling="4";
+                    break;
+              }
+              $( "#noise" ).val(feeling);
+              $( "#noise_level" ).val(feeling);  
+            }
+
+  })
+  .slider("pips", {
+        rest: "label",
+        labels: noisyness
+  });
+
+  $("#slider-overall").slider({
+    animate:"medium",
+    orientation: "horizontal",
+    min: 0,
+    max: overall.length-1,
+    value: 4,
+    slide: function( event, ui ) {
+              var overalllevel=ui.value;
+              var feeling="Normal";
+              switch(overalllevel) {
+                case 0:
+                    feeling="-4";
+                    break;
+                case 1:
+                    feeling="-3";
+                    break;
+                case 2:
+                    feeling="-2";
+                    break;
+                case 3:
+                    feeling="-1";
+                    break;
+                case 4:
+                    feeling="0";
+                    break;
+                case 5:
+                    feeling="1";
+                    break;
+                case 6:
+                    feeling="2";
+                    break;
+                case 7:
+                    feeling="3";
+                    break;
+                case 8:
+                    feeling="4";
+                    break;
+              }
+              $( "#overall" ).val(feeling);
+              $( "#overall_level" ).val(feeling);  
+            }
+
+  })
+  .slider("pips", {
+        rest: "label",
+        labels: overall
+  });
 
 });
